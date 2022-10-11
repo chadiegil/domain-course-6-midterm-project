@@ -14,8 +14,8 @@ const GetData = () => {
       .then((res) => res.json())
       .then((res) => {
         // destructuring the data response from api
-
         const { venues } = res;
+
         setLoading(false);
         setData(venues);
       })
@@ -47,7 +47,7 @@ const GetData = () => {
         <tbody>
           {Object.keys(data)?.map((venue, index) => {
             return (
-              <tr key={index}>
+              <tr key={index} className="hover-effect">
                 <td>{data[venue].id}</td>
                 <td>{data[venue].name}</td>
                 <td>{data[venue].building}</td>

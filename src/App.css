@@ -57,3 +57,8 @@ main {
 .link_text {
   font-size: 20px;
 }
+
+.hover-effect:hover {
+  background-color: lightblue;
+  cursor: pointer;
+}
