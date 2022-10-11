@@ -1,9 +1,9 @@
 import React from "react";
-import Fetch from "../data/Fetch";
+import AllVenues from "../data/AllVenues";
 const Dashboard = () => {
   return (
     <div>
-      <Fetch />
+      <AllVenues />
     </div>
   );
 };
