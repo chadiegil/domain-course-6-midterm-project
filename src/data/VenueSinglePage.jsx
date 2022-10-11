@@ -3,26 +3,37 @@ import { useParams, Link } from "react-router-dom";
 
 const VenueSinglePage = () => {
   const { id } = useParams();
-  const [venue, setVenue] = useState([]);
-  const [schedule, setSchedule] = useState([]);
+  const [venue, setVenue] = useState({});
+  const [schedule, setSchedule] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch(`https://sis.materdeicollege.com/api/venues/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setVenue(data.venue);
-        setSchedule(data.schedules[0]);
+        // destructuring the data response from api
+        const {
+          venue,
+          schedules: [sched],
+        } = data;
+
+        setLoading(false);
+        setVenue(venue);
+        setSchedule(sched);
       })
       .catch((err) => console.log(err.message));
   }, []);
-  console.log(schedule);
-  console.log(venue);
 
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-item-center">
         <h1 className="text-center m-4">Mater Dei College {venue.building}</h1>
-
+        {loading && (
+          <p className="text-white bg-success text-center">
+            Loading building and schedule record ....
+          </p>
+        )}
         <table className="table table-striped">
           <thead>
             <tr>
@@ -57,7 +68,7 @@ const VenueSinglePage = () => {
               </tr>
             </thead>
             <tbody>
-              {Object.keys(schedule)?.map((sched, index) => {
+              {Object.keys(schedule)?.map((_, index) => {
                 return (
                   <>
                     <tr key={index}>
