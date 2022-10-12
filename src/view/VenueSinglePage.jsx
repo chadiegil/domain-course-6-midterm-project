@@ -34,7 +34,7 @@ const VenueSinglePage = () => {
         <h1 className="text-center m-4">Mater Dei College {venue.building}</h1>
         {error && (
           <p className="text-danger text-center">
-            Something wrong from the API
+            Something's wrong fetching the API
           </p>
         )}
         {loading && (

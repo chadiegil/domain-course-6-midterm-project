@@ -10,7 +10,6 @@ const GetData = () => {
     "https://sis.materdeicollege.com/api/venues"
   );
 
-  console.log(data);
   const goSingleVenue = (venue) => {
     navigate(`/api/venues/${venue}`);
   };
