@@ -1,12 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
-import Teachers from "./pages/Teachers";
-import Analytics from "./pages/Analytics";
-import Comment from "./pages/Comment";
-import Dashboard from "./pages/Dashboard";
-import Grades from "./pages/Grades";
-import Records from "./pages/Records";
+import {
+  Teachers,
+  Analytics,
+  Comment,
+  Dashboard,
+  Grades,
+  Records,
+} from "./pages";
 import VenueSinglePage from "./view/VenueSinglePage";
 
 function App() {
