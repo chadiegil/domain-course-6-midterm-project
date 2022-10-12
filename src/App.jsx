@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
-import VenueSinglePage from "./data/VenueSinglePage";
-import About from "./pages/About";
+import Teachers from "./pages/Teachers";
 import Analytics from "./pages/Analytics";
 import Comment from "./pages/Comment";
 import Dashboard from "./pages/Dashboard";
-import Product from "./pages/Product";
-import ProductList from "./pages/ProductList";
+import Grades from "./pages/Grades";
+import Records from "./pages/Records";
+import VenueSinglePage from "./view/VenueSinglePage";
 
 function App() {
   return (
@@ -17,11 +17,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/teachers" element={<Teachers />} />
             <Route path="/comment" element={<Comment />} />
             <Route path="/analytics" element={<Analytics />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/productList" element={<ProductList />} />
+            <Route path="/grades" element={<Grades />} />
+            <Route path="/records" element={<Records />} />
 
             <Route path="/api/venues/:id" element={<VenueSinglePage />} />
           </Routes>

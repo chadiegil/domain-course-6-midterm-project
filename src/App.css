@@ -59,6 +59,6 @@ main {
 }
 
 .hover-effect:hover {
-  background-color: lightblue;
+  background-color: rgb(221, 236, 241);
   cursor: pointer;
 }

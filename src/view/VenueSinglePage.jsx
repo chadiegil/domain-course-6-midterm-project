@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-
+import { BiArrowBack } from "react-icons/bi";
 const VenueSinglePage = () => {
   const { id } = useParams();
   const [venue, setVenue] = useState({});
   const [schedule, setSchedule] = useState({});
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -22,13 +23,20 @@ const VenueSinglePage = () => {
         setVenue(venue);
         setSchedule(sched);
       })
-      .catch((err) => console.log(err.message));
+      .catch((error) => {
+        setLoading(false);
+        setError(error.message);
+      });
   }, []);
-
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-item-center">
         <h1 className="text-center m-4">Mater Dei College {venue.building}</h1>
+        {error && (
+          <p className="text-danger text-center">
+            Something wrong from the API
+          </p>
+        )}
         {loading && (
           <p className="text-white bg-success text-center">
             Loading building and schedule record ....
@@ -87,7 +95,8 @@ const VenueSinglePage = () => {
         )}
       </div>
       <Link to="/" className="btn btn-sm btn-primary mt-1">
-        back to venues
+        <BiArrowBack />
+        back
       </Link>
     </>
   );

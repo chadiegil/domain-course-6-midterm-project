@@ -1,9 +1,7 @@
-import React from "react";
-
 const Product = () => {
   return (
     <div>
-      <h1>product page</h1>
+      <h1>Grades page</h1>
     </div>
   );
 };

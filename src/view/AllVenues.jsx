@@ -1,27 +1,16 @@
-import React, { useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
+
+import useFetch from "../hooks/useFetch";
+
 const GetData = () => {
-  const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { data, loading, error } = useFetch(
+    "https://sis.materdeicollege.com/api/venues"
+  );
 
-  useEffect(() => {
-    setLoading(true);
-
-    fetch("https://sis.materdeicollege.com/api/venues")
-      .then((res) => res.json())
-      .then((res) => {
-        // destructuring the data response from api
-        const { venues } = res;
-
-        setLoading(false);
-        setData(venues);
-      })
-      .catch((error) => console.log(error.message));
-  }, []);
-
+  console.log(data);
   const goSingleVenue = (venue) => {
     navigate(`/api/venues/${venue}`);
   };
@@ -29,7 +18,9 @@ const GetData = () => {
   return (
     <>
       <h1 className="text-center m-4">Mater Dei College Venues</h1>
-
+      {error && (
+        <p className="text-danger text-center">Something wrong from the API</p>
+      )}
       {loading && (
         <div className="text-center bg-success text-white">
           Loading Venues...

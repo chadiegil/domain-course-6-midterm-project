@@ -1,5 +1,4 @@
-import React from "react";
-import AllVenues from "../data/AllVenues";
+import AllVenues from "../view/AllVenues";
 const Dashboard = () => {
   return (
     <div>
