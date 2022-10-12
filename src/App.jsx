@@ -25,7 +25,7 @@ function App() {
             <Route path="/grades" element={<Grades />} />
             <Route path="/records" element={<Records />} />
 
-            <Route path="/api/venues/:id" element={<VenueSinglePage />} />
+            <Route path="/venues/:id" element={<VenueSinglePage />} />
           </Routes>
         </Sidebar>
       </BrowserRouter>

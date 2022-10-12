@@ -11,7 +11,7 @@ const GetData = () => {
   );
 
   const goSingleVenue = (venue) => {
-    navigate(`/api/venues/${venue}`);
+    navigate(`/venues/${venue}`);
   };
 
   return (
