@@ -47,6 +47,7 @@ main {
   background: rgb(12, 94, 172);
   color: #ffff;
   transition: all 0.5s;
+  margin-left: 5px;
 }
 .active {
   background: rgb(12, 94, 172);
