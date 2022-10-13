@@ -14,20 +14,19 @@ const VenueSinglePage = () => {
       .then((res) => res.json())
       .then((data) => {
         // destructuring the data response from api
-        const {
-          venue,
-          schedules: [sched],
-        } = data;
+        const { venue } = data;
 
         setLoading(false);
         setVenue(venue);
-        setSchedule(sched);
+        setSchedule(data.schedules);
       })
       .catch((error) => {
         setLoading(false);
         setError(error.message);
       });
   }, []);
+
+  console.log(schedule);
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-item-center">
@@ -84,18 +83,19 @@ const VenueSinglePage = () => {
               </tr>
             </thead>
             <tbody>
-              {Object.keys(schedule)?.map((_, index) => {
+              {Object.keys(schedule)?.map((sched, index) => {
                 return (
                   <tr key={index}>
-                    <td>{schedule.id}</td>
-                    <td>{schedule.course_no}</td>
-                    <td>{schedule.description}</td>
-                    <td>{schedule.schedule}</td>
-                    <td>{schedule.size}</td>
-                    <td>{schedule.teacher}</td>
+                    <td>{schedule[sched].id}</td>
+                    <td>{schedule[sched].course_no}</td>
+                    <td>{schedule[sched].description}</td>
+                    <td>{schedule[sched].schedule}</td>
+                    <td>{schedule[sched].size}</td>
+                    <td>{schedule[sched].teacher}</td>
                   </tr>
                 );
               })}
+              {console.log(schedule)}
             </tbody>
           </table>
         )}
