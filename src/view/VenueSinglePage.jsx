@@ -63,14 +63,14 @@ const VenueSinglePage = () => {
         </table>
         <h1
           className={
-            schedule
+            schedule.length > 0
               ? "text-center text-white bg-primary"
               : "text-white text-center bg-info"
           }
         >
-          {schedule ? "Schedules" : "No Schedule Found"}
+          {schedule.length > 0 ? "Schedules" : "No Schedule Found"}
         </h1>
-        {schedule && (
+        {schedule.length > 0 && (
           <table className="table table-striped">
             <thead>
               <tr>
@@ -95,7 +95,6 @@ const VenueSinglePage = () => {
                   </tr>
                 );
               })}
-              {console.log(schedule)}
             </tbody>
           </table>
         )}
