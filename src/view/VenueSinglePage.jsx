@@ -31,7 +31,9 @@ const VenueSinglePage = () => {
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-item-center">
-        <h1 className="text-center m-4">Mater Dei College {venue.building}</h1>
+        <h1 className="text-center bg-primary text-white w-100">
+          Mater Dei College {venue.building}
+        </h1>
         {error && (
           <p className="text-danger text-center">
             Something's wrong fetching the API
@@ -60,7 +62,13 @@ const VenueSinglePage = () => {
             </tr>
           </tbody>
         </table>
-        <h1 className="text-center m-4">
+        <h1
+          className={
+            schedule
+              ? "text-center text-white bg-primary"
+              : "text-white text-center bg-info"
+          }
+        >
           {schedule ? "Schedules" : "No Schedule Found"}
         </h1>
         {schedule && (
@@ -78,16 +86,14 @@ const VenueSinglePage = () => {
             <tbody>
               {Object.keys(schedule)?.map((_, index) => {
                 return (
-                  <>
-                    <tr key={index}>
-                      <td>{schedule.id}</td>
-                      <td>{schedule.course_no}</td>
-                      <td>{schedule.description}</td>
-                      <td>{schedule.schedule}</td>
-                      <td>{schedule.size}</td>
-                      <td>{schedule.teacher}</td>
-                    </tr>
-                  </>
+                  <tr key={index}>
+                    <td>{schedule.id}</td>
+                    <td>{schedule.course_no}</td>
+                    <td>{schedule.description}</td>
+                    <td>{schedule.schedule}</td>
+                    <td>{schedule.size}</td>
+                    <td>{schedule.teacher}</td>
+                  </tr>
                 );
               })}
             </tbody>

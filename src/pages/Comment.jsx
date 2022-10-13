@@ -1,7 +1,7 @@
 const Comment = () => {
   return (
     <div>
-      <h1>Comment page</h1>
+      <h1 className="bg-primary text-white text-center">Comment page</h1>
     </div>
   );
 };

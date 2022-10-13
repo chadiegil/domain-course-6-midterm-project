@@ -1,4 +1,4 @@
-import { FaEdit } from "react-icons/fa";
+import { GoLinkExternal } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
 
@@ -16,7 +16,9 @@ const GetData = () => {
 
   return (
     <>
-      <h1 className="text-center m-4">Mater Dei College Venues</h1>
+      <h1 className="text-center bg-primary text-white">
+        Mater Dei College Venues
+      </h1>
       {error && (
         <p className="text-danger text-center">Something wrong from the API</p>
       )}
@@ -43,7 +45,7 @@ const GetData = () => {
                 <td>{data[venue].building}</td>
                 <td className="d-flex justify-content-between  align-items-center">
                   <div>{data[venue].capacity}</div>
-                  <FaEdit
+                  <GoLinkExternal
                     className="go-to"
                     onClick={() => {
                       goSingleVenue(data[venue].id);

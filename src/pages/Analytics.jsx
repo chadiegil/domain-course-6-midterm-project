@@ -1,7 +1,7 @@
 const Analytics = () => {
   return (
     <div>
-      <h1>Analytics page</h1>
+      <h1 className="bg-primary text-white text-center">Analytics page</h1>
     </div>
   );
 };

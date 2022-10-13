@@ -8,6 +8,8 @@ import {
   FaShoppingBag,
   FaThList,
 } from "react-icons/fa";
+
+import { AiOutlineLogin } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
@@ -43,6 +45,11 @@ const Sidebar = ({ children }) => {
       path: "/records",
       name: "Records",
       icon: <FaThList />,
+    },
+    {
+      path: "/login",
+      name: "Login",
+      icon: <AiOutlineLogin />,
     },
   ];
   return (
