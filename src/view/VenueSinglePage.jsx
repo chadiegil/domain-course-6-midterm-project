@@ -6,6 +6,8 @@ import { TbFileDescription } from "react-icons/tb";
 import { BsCalendarDate } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import "./styles.css";
+import Spinner from "react-bootstrap/Spinner";
+
 const VenueSinglePage = () => {
   const { id } = useParams();
   const [venue, setVenue] = useState({});
@@ -44,8 +46,8 @@ const VenueSinglePage = () => {
           </p>
         )}
         {loading && (
-          <p className="text-white bg-success text-center">
-            Loading building and schedule record ....
+          <p className="text-white text-center">
+            <Spinner animation="border" variant="primary" />
           </p>
         )}
         <table className="table table-striped">

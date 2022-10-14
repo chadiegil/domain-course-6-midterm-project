@@ -1,8 +1,8 @@
 import { GoLinkExternal } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
-
 import useFetch from "../hooks/useFetch";
+import Spinner from "react-bootstrap/Spinner";
 
 const GetData = () => {
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ const GetData = () => {
         <p className="text-danger text-center">Something wrong from the API</p>
       )}
       {loading && (
-        <div className="text-center bg-success text-white">
-          Loading Venues...
+        <div className="text-center text-white">
+          <Spinner animation="border" variant="primary" />
         </div>
       )}
       <table className="table table-striped">
