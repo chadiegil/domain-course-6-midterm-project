@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
+import { BsFillJournalBookmarkFill } from "react-icons/bs";
+import { TbFileDescription } from "react-icons/tb";
+import { BsCalendarDate } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
+import "./styles.css";
 const VenueSinglePage = () => {
   const { id } = useParams();
   const [venue, setVenue] = useState({});
@@ -10,6 +15,7 @@ const VenueSinglePage = () => {
 
   useEffect(() => {
     setLoading(true);
+
     fetch(`https://sis.materdeicollege.com/api/venues/${id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -26,7 +32,6 @@ const VenueSinglePage = () => {
       });
   }, []);
 
-  console.log(schedule);
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-item-center">
@@ -70,35 +75,57 @@ const VenueSinglePage = () => {
         >
           {schedule.length > 0 ? "Schedules" : "No Schedule Found"}
         </h1>
-        {schedule.length > 0 && (
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Course No.</th>
-                <th scope="col">Description</th>
-                <th scope="col">Schedule</th>
-                <th scope="col">Size</th>
-                <th scope="col">Teacher</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.keys(schedule)?.map((sched, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{schedule[sched].id}</td>
-                    <td>{schedule[sched].course_no}</td>
-                    <td>{schedule[sched].description}</td>
-                    <td>{schedule[sched].schedule}</td>
-                    <td>{schedule[sched].size}</td>
-                    <td>{schedule[sched].teacher}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
+        <div className="wrapper">
+          {Object.keys(schedule)?.map((sched, index) => {
+            return (
+              <div
+                className="card m-2 elevation-3"
+                style={{
+                  width: "400px",
+                  height: "290px",
+                }}
+                key={index}
+              >
+                <div>
+                  <div className="card-header bg-primary text-white">
+                    <p className="card-text">ID: {schedule[sched].id}</p>
+                  </div>
+                  <div className="card-body">
+                    <p className="card-text">
+                      <BsFillJournalBookmarkFill
+                        color="red"
+                        style={{ marginRight: "5", marginLeft: "2" }}
+                      />
+                      Course No.
+                      {schedule[sched].course_no}
+                    </p>
+                    <p className="card-text">
+                      <TbFileDescription color="blue" fontSize={20} />{" "}
+                      Description: {schedule[sched].description}
+                    </p>
+                    <p className="card-text">
+                      <BsCalendarDate
+                        color="green"
+                        style={{ marginLeft: "2", marginRight: "7" }}
+                      />
+                      Schedule: {schedule[sched].schedule}
+                    </p>
+                    <p className="card-text">Size: {schedule[sched].size}</p>
+                    <p className="card-footer card-text">
+                      <CgProfile
+                        color="orangered"
+                        style={{ marginRight: "2", marginTop: "-4" }}
+                      />
+                      Teacher: <strong>{schedule[sched].teacher}</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
+
       <Link to="/" className="btn btn-sm btn-primary mt-1">
         <BiArrowBack />
         back
