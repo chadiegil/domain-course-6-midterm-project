@@ -83,7 +83,7 @@ const VenueSinglePage = () => {
               <div
                 className="card m-2 elevation-3"
                 style={{
-                  width: "400px",
+                  width: "500px",
                   height: "290px",
                 }}
                 key={index}
